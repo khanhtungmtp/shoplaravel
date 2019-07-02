@@ -35,6 +35,6 @@ class AdminCategory extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('categories');
     }
 }

@@ -14,8 +14,8 @@ class AdminCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:4|max:50|unique:categories,name,'.($this->id ?? ''),
-            'icon' => 'required',
+            'name' => 'required|min:4|max:50|unique:categories,name,' . ($this->id ?? ''),
+            'icon' => 'required'
         ];
     }
 
@@ -23,8 +23,8 @@ class AdminCategoryRequest extends FormRequest
     {
         return [
             'required' => ':attribute không được bỏ trống',
-            'min' => ':attribute phải từ 4-50 ký tự',
-            'max' => ':attribute phải từ 4-50 ký tự'
+            'min'      => ':attribute phải từ 4-50 ký tự',
+            'max'      => ':attribute phải từ 4-50 ký tự'
         ];
     }
 
@@ -32,7 +32,7 @@ class AdminCategoryRequest extends FormRequest
     {
         return [
             'name' => 'Tên danh mục',
-            'icon' => 'Icon',
+            'icon' => 'Icon'
         ];
     }
 
