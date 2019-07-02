@@ -19,11 +19,11 @@ class AdminProduct extends Model
     protected $status = [
         1 => [
             'name'  => 'Hiển thị',
-            'class' => '',
+            'class' => 'label-success',
         ],
         0 => [
-            'name'  => 'Không hiển thị',
-            'class' => ''
+            'name'  => 'Ẩn',
+            'class' => 'label-default'
         ]
     ];
     protected $is_hot = [

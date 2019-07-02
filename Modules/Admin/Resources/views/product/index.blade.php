@@ -24,14 +24,25 @@
                     <h3 class="card-title">
                         <a href="{{ route('admin.get.create.category') }}" class="btn btn-primary">Thêm mới</a>
                     </h3>
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    <div class="card-tools">
+                        <form method="get">
+                            <div class="input-group input-group-sm" style="width: 250px;">
+                                <select name="cate" id="" >
+                                    <option value="" >Danh mục</option>
+                                    @if (isset($categories))
+                                        @foreach ($categories as $cat)
+                                            <option value="{{ $cat->id }}" {{ \Request::get('cate') == $cat->id ? "selected='selected'" : '' }}>{{ $cat->name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                <input type="text" name="name" class="form-control float-right" placeholder="Search">
+
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /.card-header -->
@@ -57,8 +68,8 @@
                                     </td>
                                     <td>{{ $product->slug }}</td>
                                     <td>{{ isset($product->category->name) ? $product->category->name : '[N\A]' }}</td>
-                                    <td><span class="label-success">{{ $product->getStatus($product->active)['name'] }}</span></td>
-                                    <td><span class="label-success">{{ $product->getHot($product->hot)['name'] }}</span></td>
+                                    <td><a href="{{ route('admin.post.action.product',['active',$product->id]) }}" class="{{ $product->getStatus($product->active)['class'] }}">{{ $product->getStatus($product->active)['name'] }}</a></td>
+                                    <td><a href="{{ route('admin.post.action.product',['hot',$product->id]) }}" class="{{ $product->getHot($product->hot)['class'] }}">{{ $product->getHot($product->hot)['name'] }}</a></td>
                                     <td>
                                         <a href="{{ route('admin.get.edit.product', $product->id) }}">
                                             <i class="fa fa-edit">Sửa</i>

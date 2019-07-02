@@ -15,10 +15,15 @@ class AdminProductController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = AdminProduct::with('category:id,name')->paginate(10);
-        return view('admin::product.index', compact('products'));
+        $products = AdminProduct::with('category:id,name');
+        if ($request->name) $products->where('name','like','%'.$request->name.'%');
+        if ($request->cate) $products->where('category_id',$request->cate);
+
+        $products = $products->orderByDesc('id')->paginate(10);
+        $categories = $this->getAllCategories();
+        return view('admin::product.index', compact('products', 'categories'));
     }
 
     /**
@@ -138,9 +143,21 @@ class AdminProductController extends Controller
             {
                 case 'delete':
                     $product->delete();
+                    return redirect()->route('admin.get.list.product')->with(['message' => 'Xóa sản phẩm thành công']);
+                    break;
+                case 'active':
+                    $product->active = $product->active ? 0 : 1;
+                    $product->save();
+                    return redirect()->route('admin.get.list.product')->with(['message' => 'Cập nhập trạng thái sản phẩm thành công']);
+                    break;
+
+                case 'hot':
+                    $product->hot = $product->hot ? 0 : 1;
+                    $product->save();
+                    return redirect()->route('admin.get.list.product')->with(['message' => 'Cập nhập sản phẩm nổi bật thành công']);
                     break;
             }
+
         }
-        return redirect()->route('admin.get.list.product')->with(['message' => 'Xóa sản phẩm thành công']);
-    }
+       }
 }
