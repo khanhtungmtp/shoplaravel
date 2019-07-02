@@ -63,9 +63,15 @@ class AdminProductController extends Controller
         }
         $data                = $request->all();
         $data['slug']        = str_slug($request->name);
-        $data['active']      = 1;
+        $data['active']      = $request->active =='on' ? 1 : 0 ;
         $data['title_seo']   = $request->title_seo ? $request->title_seo : $request->name;
         $data['keyword_seo'] = $request->keyword_seo ? $request->keyword_seo : '';
+        if ($request->hasFile('avatar')){
+            $file = upload_image('avatar','products');
+            if (isset($file['name'])) {
+                $data['avatar'] = $file['name'];
+            }
+        }
         if ($update == 1)
         {
             $product->update($data);

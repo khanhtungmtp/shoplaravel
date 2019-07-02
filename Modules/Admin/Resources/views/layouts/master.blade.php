@@ -161,7 +161,7 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+      2019
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2019 <a href="https://fb.com/khanhtungmtp">Nguyễn khanh tùng</a>.</strong> All rights reserved.
@@ -179,7 +179,7 @@
 <script src="assets/admin/dist/js/adminlte.min.js"></script>
 
 <script src="assets/admin/dist/js/toastr.min.js"></script>
-
+@yield('script')
 @if(session('message'))
   <script type="text/javascript">
     toastr.success('{{ session('message') }}', 'Thông báo', {timeOut: 5000});
@@ -191,5 +191,23 @@
     toastr.error('{{ session('error') }}', 'Thông báo', {timeOut: 5000});
   </script>
 @endif
+
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#out_img').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#input_img").change(function() {
+    readURL(this);
+  });
+</script>
 </body>
 </html>

@@ -5,12 +5,12 @@
 @section('breadcrumb')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Danh mục</h1>
+            <h1 class="m-0 text-dark">Sản phẩm</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                <li class="breadcrumb-item active">Danh mục</li>
+                <li class="breadcrumb-item active">Sản phẩm</li>
             </ol>
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">
-                        <a href="{{ route('admin.get.create.category') }}" class="btn btn-primary">Thêm mới</a>
+                        <a href="{{ route('admin.get.create.product') }}" class="btn btn-primary">Thêm mới</a>
                     </h3>
 
                     <div class="card-tools">
@@ -62,9 +62,12 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>
-                                        {{ $product->name }}
-                                        {{ $product->price }}
-                                        {{ $product->price_sale }}
+                                        <img src="{{ pare_url_file($product->avatar, 'products') }}" class="img img-responsive" width="80" alt="{{ $product->name }}">
+                                      Tên:  {{ $product->name }}
+                                        <br>
+                                      Giá:  {{ $product->price }}
+                                        <br>
+                                      Giá sale:  {{ $product->price_sale }}
                                     </td>
                                     <td>{{ $product->slug }}</td>
                                     <td>{{ isset($product->category->name) ? $product->category->name : '[N\A]' }}</td>

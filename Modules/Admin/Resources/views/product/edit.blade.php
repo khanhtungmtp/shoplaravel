@@ -28,7 +28,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" method="post" action="{{ route('admin.post.update.product', $product->id) }}">
+                <form role="form" method="post" action="{{ route('admin.post.update.product', $product->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-sm-8">
@@ -55,7 +55,7 @@
 
                                 <div class="form-group">
                                     <label for="content">Nội dung sản phẩm</label>
-                                    <textarea name="content" id="content" class="form-control">{{ old('content', $product->content) }}</textarea>
+                                    <textarea name="content" id="input_content" class="form-control">{{ old('content', $product->content) }}</textarea>
                                     @if ($errors->has('content'))
                                         <span class="text-danger">
                                             {{ $errors->first('content') }}
@@ -85,7 +85,9 @@
                                         <option value="">--Chọn loại sản phẩm--</option>
                                         @if (isset($categories))
                                             @foreach ($categories as $cat)
-                                                <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                                <option value="{{ $cat->id }}" @if ($product->category_id == $cat->id)
+                                                    selected
+                                                @endif>{{ $cat->name }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -112,13 +114,19 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <img src="{{ asset('img/no-image.jpg') }}" id="out_img"  alt="" width="80">
+                                </div>
+                                
+                                <div class="form-group">
                                     <label for="avatar">Hình sản phẩm</label>
-                                    <input type="file" name="avatar" placeholder="Hình sản phẩm" class="form-control">
+                                    <input type="file" name="avatar" id="input_img" placeholder="Hình sản phẩm" class="form-control">
                                 </div>
 
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" name="active" id="activeCat"
-                                           checked>
+                                           @if ($product->active ==1)
+                                           checked
+                                           @endif>
                                     <label class="form-check-label" for="activeCat">Hiển thị</label>
                                 </div>
                             </div>
@@ -135,4 +143,11 @@
         </div>
         <!--/.col (left) -->
     </div>
+@endsection
+
+@section('script')
+    <script src="ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('input_content');
+    </script>
 @endsection

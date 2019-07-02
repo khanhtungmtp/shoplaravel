@@ -55,7 +55,7 @@
 
                                 <div class="form-group">
                                     <label for="content">Nội dung sản phẩm</label>
-                                    <textarea name="content" id="content" class="form-control">{{ old('content') }}</textarea>
+                                    <textarea name="content" id="input_content" class="form-control">{{ old('content') }}</textarea>
                                     @if ($errors->has('content'))
                                         <span class="text-danger">
                                             {{ $errors->first('content') }}
@@ -112,8 +112,12 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <img src="{{ asset('img/no-image.jpg') }}" id="out_img" alt="" width="80">
+                                </div>
+
+                                <div class="form-group">
                                     <label for="avatar">Hình sản phẩm</label>
-                                    <input type="file" name="avatar" placeholder="Hình sản phẩm" class="form-control">
+                                    <input type="file" name="avatar" id="input_img" placeholder="Hình sản phẩm" class="form-control">
                                 </div>
 
                                 <div class="form-check">
@@ -135,4 +139,11 @@
         </div>
         <!--/.col (left) -->
     </div>
+@endsection
+
+@section('script')
+    <script src="ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('input_content');
+    </script>
 @endsection
