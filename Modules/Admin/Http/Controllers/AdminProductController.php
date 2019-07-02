@@ -17,7 +17,7 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        $products = AdminProduct::all();
+        $products = AdminProduct::with('category:id,name')->paginate(10);
         return view('admin::product.index', compact('products'));
     }
 
@@ -38,7 +38,7 @@ class AdminProductController extends Controller
      */
     public function store(AdminProductRequest $request)
     {
-         $this->insertOrUpdate($request);
+        $this->insertOrUpdate($request);
         return back()->with(['message' => 'Thêm mới sản phẩm thành công']);
     }
 
@@ -50,21 +50,24 @@ class AdminProductController extends Controller
     public function insertOrUpdate($request, $id = '')
     {
         $update = 0;
-        $data = new AdminProduct();
-        if ($id){
-            $update = 1;
-            $product =  AdminProduct::find($id);
+        $data   = new AdminProduct();
+        if ($id)
+        {
+            $update  = 1;
+            $product = AdminProduct::find($id);
         }
-         $data = $request->all();
-         $data['slug'] = str_slug($request->name);
-         $data['active'] = 1;
-         $data['title_seo'] = $request->title_seo ? $request->title_seo : $request->name;
-         $data['keyword_seo'] = $request->keyword_seo ? $request->keyword_seo : '';
-         if ($update == 1) {
-             $product->update($data);
-         } else {
-             AdminProduct::create($data);
-         }
+        $data                = $request->all();
+        $data['slug']        = str_slug($request->name);
+        $data['active']      = 1;
+        $data['title_seo']   = $request->title_seo ? $request->title_seo : $request->name;
+        $data['keyword_seo'] = $request->keyword_seo ? $request->keyword_seo : '';
+        if ($update == 1)
+        {
+            $product->update($data);
+        } else
+        {
+            AdminProduct::create($data);
+        }
     }
 
     /**
@@ -95,7 +98,7 @@ class AdminProductController extends Controller
     public function edit($id)
     {
         $categories = $this->getAllCategories();
-        $product = AdminProduct::find($id);
+        $product    = AdminProduct::find($id);
         return view('admin::product.edit', compact('product', 'categories'));
     }
 

@@ -41,16 +41,24 @@
                             <th>STT</th>
                             <th>Tên danh mục</th>
                             <th>Tiêu đề seo</th>
+                            <th>Loại sản phẩm</th>
                             <th>Trạng thái</th>
+                            <th>Nổi bật</th>
                             <th>Chức năng</th>
                         </tr>
                         @if (isset($products))
                             @foreach ($products as $key => $product)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $product->name }}</td>
+                                    <td>
+                                        {{ $product->name }}
+                                        {{ $product->price }}
+                                        {{ $product->price_sale }}
+                                    </td>
                                     <td>{{ $product->slug }}</td>
-                                    <td><span class="tag tag-success">{{ $product->getStatus($product->active)['name'] }}</span></td>
+                                    <td>{{ isset($product->category->name) ? $product->category->name : '[N\A]' }}</td>
+                                    <td><span class="label-success">{{ $product->getStatus($product->active)['name'] }}</span></td>
+                                    <td><span class="label-success">{{ $product->getHot($product->hot)['name'] }}</span></td>
                                     <td>
                                         <a href="{{ route('admin.get.edit.product', $product->id) }}">
                                             <i class="fa fa-edit">Sửa</i>

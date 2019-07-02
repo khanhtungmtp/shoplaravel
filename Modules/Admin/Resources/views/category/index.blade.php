@@ -50,7 +50,7 @@
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $cat->name }}</td>
                                     <td>{{ $cat->slug }}</td>
-                                    <td><span class="tag tag-success">{{ $cat->getStatus($cat->active)['name'] }}</span></td>
+                                    <td><span class="label-success">{{ $cat->getStatus($cat->active)['name'] }}</span></td>
                                     <td>
                                         <a href="{{ route('admin.get.edit.category', $cat->id) }}">
                                             <i class="fa fa-edit">Sửa</i>

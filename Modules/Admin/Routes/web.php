@@ -13,7 +13,7 @@
 
 Route::prefix('admin')->group(function ()
 {
-    Route::get('/', 'AdminController@index');
+    Route::get('/', 'AdminController@index')->name('index');
 
     Route::group(['prefix' => 'category'], function ()
     {

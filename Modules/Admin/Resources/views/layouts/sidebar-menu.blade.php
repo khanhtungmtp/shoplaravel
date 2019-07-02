@@ -3,7 +3,7 @@
     <!-- Add icons to the links using the .nav-icon class
          with font-awesome or any other icon font library -->
     <li class="nav-item has-treeview">
-      <a href="/admin" class="nav-link active">
+      <a href="/admin" class="nav-link @if(Route::is('index')) active @endif">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
           Dashboard
@@ -20,13 +20,13 @@
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="{{ route('admin.get.list.category') }}" class="nav-link">
+          <a href="{{ route('admin.get.list.category') }}" class="nav-link @if(Route::is('admin.get.list.category')) menu-open @endif">
             <i class="far fa-circle nav-icon"></i>
             <p>Danh sách</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.get.create.category') }}" class="nav-link">
+          <a href="{{ route('admin.get.create.category') }}" class="nav-link @if(Route::is('admin.get.create.category')) active @endif">
             <i class="far fa-circle nav-icon"></i>
             <p>Thêm mới</p>
           </a>
@@ -34,7 +34,7 @@
       </ul>
     </li>
     <li class="nav-item has-treeview">
-      <a href="#" class="nav-link">
+      <a href="#" class="nav-link @if(Route::is('admin.get.list.category')) menu-open @endif">
         <i class="nav-icon fas fa-chart-pie"></i>
         <p>
           Sản phẩm
@@ -43,13 +43,13 @@
       </a>
       <ul class="nav nav-treeview">
         <li class="nav-item">
-          <a href="{{ route('admin.get.list.product') }}" class="nav-link">
+          <a href="{{ route('admin.get.list.product') }}" class="nav-link @if(Route::is('admin.get.list.product')) active @endif">
             <i class="far fa-circle nav-icon"></i>
             <p>Danh sách</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('admin.get.create.product') }}" class="nav-link">
+          <a href="{{ route('admin.get.create.product') }}" class="nav-link @if(Route::is('admin.get.create.product')) active @endif">
             <i class="far fa-circle nav-icon"></i>
             <p>Thêm mới</p>
           </a>
