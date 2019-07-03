@@ -3,22 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use Modules\Admin\Entities\AdminCategory;
 
-class HomeController extends Controller
+class CategoryController extends Controller
 {
-    /**
-     * share category cho toan bo trang
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function __construct()
-    {
-        $categories = AdminCategory::all();
-        View::share('categories', $categories);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+
     }
 
     /**

@@ -13,44 +13,16 @@
                 <div class="mainmenu">
                     <nav>
                         <ul>
-                            <li class="expand"><a href="index.html">Home</a>
-                                <ul class="restrain sub-menu">
-                                    <li><a href="index-2.html">Home 2</a></li>
-                                    <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index-4.html">Home 4</a></li>
-                                    <li><a href="index-5.html">Home 5</a></li>
-                                    <li><a href="index-6.html">Home 6</a></li>
-                                    <li><a href="index-7.html">Home 7</a></li>
-                                    <li><a href="index-8.html">Home 8</a></li>
-                                </ul>
+                            <li class="expand"><a href="/">Home</a>
                             </li>
-                            <li class="expand"><a href="shop-grid.html">Man</a>
-                                <div class="restrain mega-menu megamenu1">
-											<span>
-												<a class="mega-menu-title" href="shop-grid.html"> Dresses </a>
-												<a href="shop-grid.html">Coctail</a>
-												<a href="shop-grid.html">Day</a>
-												<a href="shop-grid.html">Evening </a>
-												<a href="shop-grid.html">Sports</a>
-											</span>
-                                    <span>
-												<a class="mega-menu-title" href="shop-grid.html"> Handbags </a>
-												<a href="shop-grid.html">Blazers</a>
-												<a href="shop-grid.html">Table</a>
-												<a href="shop-grid.html">Coats</a>
-												<a href="shop-grid.html">Kids</a>
-											</span>
-                                    <span>
-												<a class="mega-menu-title" href="shop-grid.html"> Clothing </a>
-												<a href="shop-grid.html">T-Shirt</a>
-												<a href="shop-grid.html">Coats</a>
-												<a href="shop-grid.html">Jackets</a>
-												<a href="shop-grid.html">Jeans</a>
-											</span>
-                                    <span class="block-last">
-												<img src="assets/client/img/block_menu.jpg" alt="" />
-											</span>
-                                </div>
+                            <li class="expand"><a href="">Danh muc</a>
+                                <ul class="restrain sub-menu">
+                                    @if (isset($categories))
+                                        @foreach ($categories as $cate)
+                                            <li><a href="{{ route('category.index',[$cate->slug, $cate->id]) }}">{{ $cate->name }}</a></li>
+                                        @endforeach
+                                    @endif
+                                </ul>
                             </li>
                             <li class="expand"><a href="shop-list.html">Women</a>
                                 <div class="restrain mega-menu megamenu2">

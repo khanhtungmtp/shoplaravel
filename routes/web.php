@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/danh-muc/{slug}-{id}', 'CategoryController@index')->name('category.index');
