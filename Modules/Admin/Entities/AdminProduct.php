@@ -46,6 +46,7 @@ class AdminProduct extends Model
     }
 
     /**
+     * tham số gồm array và tên cột trong csdl
      * Hiển thị sản phẩm hot
      **/
     public function getHot()
