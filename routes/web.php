@@ -13,3 +13,4 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/danh-muc/{slug}-{id}', 'CategoryController@index')->name('category.index');
+Route::get('/san-pham/{slug}-{id}', 'ProductDetailController@index')->name('get.product.detail');

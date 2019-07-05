@@ -69,10 +69,8 @@
                         </div>
                         <div class="cakewalk-footer-content social-footer">
                             <ul>
-                                <li><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a><span> Facebook</span></li>
-                                <li><a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus"></i></a><span> Google Plus</span></li>
-                                <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a><span> Twitter</span></li>
-                                <li><a href="https://youtube.com/" target="_blank"><i class="fa fa-youtube-play"></i></a><span> Youtube</span></li>
+                                <li><a href="https://www.facebook.com/khanhtungmtp" target="_blank"><i class="fa fa-facebook"></i></a><span> Facebook</span></li>
+                                <li><a href="https://www.youtube.com/channel/UCtUEjYDJMQELYKbEoO_m4Fw" target="_blank"><i class="fa fa-youtube-play"></i></a><span> Youtube</span></li>
                             </ul>
                         </div>
                     </div>
@@ -92,7 +90,7 @@
                         </div>
                         <div class="infof-content">
                             <h3>Our Address</h3>
-                            <p>Main Street, Banasree, Dhaka</p>
+                            <p>Tân lập, bắc tân uyên bình dương</p>
                         </div>
                     </div>
                 </div>
@@ -103,7 +101,7 @@
                         </div>
                         <div class="infof-content">
                             <h3>Phone Support</h3>
-                            <p>+88 0173 7803547</p>
+                            <p>0338716085</p>
                         </div>
                     </div>
                 </div>
@@ -114,7 +112,7 @@
                         </div>
                         <div class="infof-content">
                             <h3>Email Support</h3>
-                            <p>admin@bootexperts.com</p>
+                            <p>nguyenkhanhtung580@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -188,7 +186,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-xs-12">
-                    <address>Copyright © <a href="http://bootexperts.com/">BootExperts.</a> All Rights Reserved</address>
+                    <address>Copyright © <a href="http://facebook.com/khanhtungmtp">Nguyễn khanh tùng.</a> All Rights Reserved</address>
                 </div>
                 <div class="col-md-6 col-xs-12">
                     <div class="footer-payment pull-right">

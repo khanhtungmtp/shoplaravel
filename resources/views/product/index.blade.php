@@ -212,8 +212,8 @@
                                                         <span class="sale-text">Sale</span>
                                                         <div class="product-img">
                                                             <a href="#">
-                                                                <img class="primary-image" src="{{ asset(pare_url_file($product->avatar)) }}" alt="" />
-                                                                <img class="secondary-image" src="{{ asset(pare_url_file($product->avatar)) }}" alt="" />
+                                                                <img class="primary-image" src="{{ asset(pare_url_file($product->avatar, 'products')) }}" alt="" />
+                                                                <img class="secondary-image" src="{{ asset(pare_url_file($product->avatar, 'products' )) }}" alt="" />
                                                             </a>
                                                             <div class="action-zoom">
                                                                 <div class="add-to-cart">
@@ -240,7 +240,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="product-content">
-                                                            <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
+                                                            <h2 class="product-name"><a href="{{ route('get.product.detail', [$product->slug, $product->id]) }}">{{ $product->name }}</a></h2>
                                                             <p>{{ $product->description }}</p>
                                                         </div>
                                                     </div>
