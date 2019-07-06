@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\AuthRequest;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -69,4 +72,21 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function index()
+    {
+        return view('auth.register');
+    }
+
+    public function store(AuthRequest $request)
+    {
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $user = User::create($data);
+
+        Auth::login($user);
+
+        return redirect()->route('home');
+    }
+
 }

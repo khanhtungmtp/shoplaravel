@@ -57,5 +57,30 @@
 
       </ul>
     </li>
+
+    <li class="nav-item has-treeview">
+      <a href="#" class="nav-link @if(Route::is('admin.get.list.transaction')) menu-open @endif">
+        <i class="nav-icon fas fa-chart-pie"></i>
+        <p>
+          Đơn hàng
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="{{ route('admin.get.list.product') }}" class="nav-link @if(Route::is('admin.get.list.transaction')) active @endif">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Danh sách</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('admin.get.create.product') }}" class="nav-link @if(Route::is('admin.get.create.transaction')) active @endif">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Thêm mới</p>
+          </a>
+        </li>
+
+      </ul>
+    </li>
   </ul>
 </nav>

@@ -34,4 +34,14 @@ Route::prefix('admin')->group(function ()
         Route::post('/update/{id}', 'AdminProductController@update')->name('admin.post.update.product');
         Route::get('/{action}/{id}', 'AdminProductController@action')->name('admin.post.action.product');
     });
+    // quan ly don hang
+    Route::group(['prefix' => 'transaction'], function ()
+    {
+        Route::get('/', 'AdminTransactionController@index')->name('admin.get.list.transaction');
+        Route::get('/create', 'AdminTransactionController@create')->name('admin.get.create.transaction');
+        Route::post('/create', 'AdminTransactionController@store')->name('admin.post.store.transaction');
+        Route::get('/edit/{id}', 'AdminTransactionController@edit')->name('admin.get.edit.transaction');
+        Route::post('/update/{id}', 'AdminTransactionController@update')->name('admin.post.update.transaction');
+        Route::get('/{action}/{id}', 'AdminTransactionController@action')->name('admin.post.action.transaction');
+    });
 });

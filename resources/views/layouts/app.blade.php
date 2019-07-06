@@ -142,5 +142,10 @@
 <!-- main js
 ============================================ -->
 <script src="assets/client/js/main.js"></script>
+@if(session('error'))
+    <script type="text/javascript">
+        toastr.error('{{ session('error') }}', 'Thông báo', {timeOut: 5000});
+    </script>
+@endif
 </body>
 </html>

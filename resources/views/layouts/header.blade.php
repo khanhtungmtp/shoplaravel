@@ -316,12 +316,15 @@
                         <div class="expand dropps-menu">
                             <a href="#"><i class="fa fa-align-right"></i></a>
                             <ul class="restrain language">
-                                <li><a href="login.html">My Account</a></li>
-                                <li><a href="wishlist.html">My Wishlist</a></li>
-                                <li><a href="cart.html">My Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="#">Testimonial</a></li>
-                                <li><a href="login.html">Log In</a></li>
+                                @if (Auth::check())
+                                    <li><a href="wishlist.html">My Wishlist</a></li>
+                                    <li><a href="cart.html">My Cart</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
+                                @else
+                                    <li><a href="{{ route('get.register') }}">Đăng ký</a></li>
+                                    <li><a href="{{ route('get.login') }}">Đăng nhập</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
