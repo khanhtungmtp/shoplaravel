@@ -82,5 +82,15 @@
 
       </ul>
     </li>
+
+    <li class="nav-item has-treeview">
+      <a href="{{ route('admin.get.list.user') }}" class="nav-link @if(Route::is('admin.get.list.user')) menu-open @endif">
+        <i class="nav-icon fas fa-chart-pie"></i>
+        <p>
+          Tài khoản
+        </p>
+      </a>
+
+    </li>
   </ul>
 </nav>

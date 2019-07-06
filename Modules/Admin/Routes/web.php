@@ -13,7 +13,7 @@
 
 Route::prefix('admin')->group(function ()
 {
-    Route::get('/', 'AdminController@index')->name('index');
+    Route::get('/', 'AdminController@index')->name('admin.index');
 
     Route::group(['prefix' => 'category'], function ()
     {
@@ -33,6 +33,16 @@ Route::prefix('admin')->group(function ()
         Route::get('/edit/{id}', 'AdminProductController@edit')->name('admin.get.edit.product');
         Route::post('/update/{id}', 'AdminProductController@update')->name('admin.post.update.product');
         Route::get('/{action}/{id}', 'AdminProductController@action')->name('admin.post.action.product');
+    });
+    // quan ly user
+    Route::group(['prefix' => 'user'], function ()
+    {
+        Route::get('/', 'AdminUserController@index')->name('admin.get.list.user');
+//        Route::get('/create', 'AdminUserController@create')->name('admin.get.create.user');
+//        Route::post('/create', 'AdminUserController@store')->name('admin.post.store.user');
+//        Route::get('/edit/{id}', 'AdminUserController@edit')->name('admin.get.edit.user');
+//        Route::post('/update/{id}', 'AdminUserController@update')->name('admin.post.update.user');
+        Route::get('/{action}/{id}', 'AdminUserController@action')->name('admin.post.action.user');
     });
     // quan ly don hang
     Route::group(['prefix' => 'transaction'], function ()
