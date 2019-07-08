@@ -11,7 +11,7 @@
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('admin.get.list.product') }}">Sản phẩm</a></li>
-                <li class="breadcrumb-item active">Thêm mới sản phẩm</li>
+                <li class="breadcrumb-item active">Thêm mới</li>
             </ol>
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -80,6 +80,16 @@
                         <div class="col-sm-4">
                             <div class="card-body">
                                 <div class="form-group">
+                                    <label for="quantity">Số lượng</label>
+                                    <input type="text" class="form-control" name="quantity">
+                                    @if ($errors->has('quantity'))
+                                        <span class="text-danger">
+                                            {{ $errors->first('quantity') }}
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group">
                                     <label for="category_id">Loại sản phẩm</label>
                                     <select name="category_id" id="" class="form-control">
                                         <option value="">--Chọn loại sản phẩm--</option>
@@ -116,8 +126,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="avatar">Hình sản phẩm</label>
-                                    <input type="file" name="avatar" id="input_img" placeholder="Hình sản phẩm" class="form-control">
+                                    <label for="image">Hình sản phẩm</label>
+                                    <input type="file" name="image" id="input_img" placeholder="Hình sản phẩm" class="form-control">
                                 </div>
 
                                 <div class="form-check">

@@ -54,4 +54,5 @@ Route::prefix('admin')->group(function ()
         Route::post('/update/{id}', 'AdminTransactionController@update')->name('admin.post.update.transaction');
         Route::get('/{action}/{id}', 'AdminTransactionController@action')->name('admin.post.action.transaction');
     });
+
 });

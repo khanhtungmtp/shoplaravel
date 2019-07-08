@@ -9,7 +9,7 @@ class AdminProduct extends Model
     protected $table    = 'products';
     protected $fillable = [
         'name', 'slug', 'description', 'content', 'category_id', 'price', 'price_sale',
-        'author_id', 'avatar', 'active', 'hot', 'view', 'title_seo', 'keyword_seo'];
+        'author_id', 'image', 'quantity', 'active', 'hot', 'view', 'title_seo', 'keyword_seo'];
     protected $guarded  = [''];
 
     const STATUS_PUBLIC  = 1;

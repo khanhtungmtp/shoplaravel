@@ -62,7 +62,7 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>
-                                        <img src="{{ pare_url_file($product->avatar, 'products') }}" class="img img-responsive" width="80" alt="{{ $product->name }}">
+                                        <img src="{{ pare_url_file($product->image, 'products') }}" class="img img-responsive" width="80" alt="{{ $product->name }}">
                                       Tên:  {{ $product->name }}
                                         <br>
                                       Giá:  {{ $product->price }}

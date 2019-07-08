@@ -80,6 +80,16 @@
                         <div class="col-sm-4">
                             <div class="card-body">
                                 <div class="form-group">
+                                    <label for="quantity">Số lượng</label>
+                                    <input type="text" class="form-control" name="quantity" value="{{ old('quantity', $product->quantity) }}">
+                                    @if ($errors->has('quantity'))
+                                        <span class="text-danger">
+                                            {{ $errors->first('quantity') }}
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="form-group">
                                     <label for="category_id">Loại sản phẩm</label>
                                     <select name="category_id" id="" class="form-control">
                                         <option value="">--Chọn loại sản phẩm--</option>
@@ -118,8 +128,8 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="avatar">Hình sản phẩm</label>
-                                    <input type="file" name="avatar" id="input_img" placeholder="Hình sản phẩm" class="form-control">
+                                    <label for="image">Hình sản phẩm</label>
+                                    <input type="file" name="image" id="input_img" placeholder="Hình sản phẩm" class="form-control">
                                 </div>
 
                                 <div class="form-check">

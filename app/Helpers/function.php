@@ -59,10 +59,15 @@ if (!function_exists('pare_url_file'))
         if (isset($explode[0]))
         {
             $time = str_replace('_', '/', $explode[0]);
-            return 'img' .'/uploads/' . $folder . '/' . date('Y/m/d', strtotime($time)) . '/' . $image;
+            return 'img' . '/uploads/' . $folder . '/' . date('Y/m/d', strtotime($time)) . '/' . $image;
         }
     }
 }
+
+/**
+ * middleware lay thong tin nguoi dung dang nhap
+ * $type là guard có thể là web, ...
+ */
 if (!function_exists('get_data_user'))
 {
     function get_data_user($type, $field = 'id')

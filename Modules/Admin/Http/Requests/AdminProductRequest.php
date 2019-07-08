@@ -18,6 +18,7 @@ class AdminProductRequest extends FormRequest
             'description' => 'required',
             'content'     => 'required',
             'price'       => 'required',
+            'quantity'    => 'required',
             'category_id' => 'required'
         ];
     }
@@ -39,7 +40,8 @@ class AdminProductRequest extends FormRequest
             'description' => 'Mô tả sản phẩm',
             'content'     => 'Nội dung sản phẩm',
             'price'       => 'Giá sản phẩm',
-            'avatar'      => 'Hình sản phẩm',
+            'image'      => 'Hình sản phẩm',
+            'quantity'    => 'Số lượng sản phẩm',
             'category_id' => 'Danh mục sản phẩm'
         ];
     }

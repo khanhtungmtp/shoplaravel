@@ -66,10 +66,10 @@ class AdminProductController extends Controller
         $data['active']      = $request->active =='on' ? 1 : 0 ;
         $data['title_seo']   = $request->title_seo ? $request->title_seo : $request->name;
         $data['keyword_seo'] = $request->keyword_seo ? $request->keyword_seo : '';
-        if ($request->hasFile('avatar')){
-            $file = upload_image('avatar','products');
+        if ($request->hasFile('image')){
+            $file = upload_image('image','products');
             if (isset($file['name'])) {
-                $data['avatar'] = $file['name'];
+                $data['image'] = $file['name'];
             }
         }
         if ($update == 1)

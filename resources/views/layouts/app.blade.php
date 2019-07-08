@@ -135,6 +135,8 @@
 ============================================ -->
 <script src="assets/client/js/wow.js"></script>
 
+<script src="assets/client/js/gmap.js"></script>
+
 <!-- plugins js
 ============================================ -->
 <script src="assets/client/js/plugins.js"></script>

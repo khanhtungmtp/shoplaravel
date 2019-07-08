@@ -23,9 +23,11 @@ class AdminProduct extends Migration
             $table->integer('price')->default(0);
             $table->integer('price_sale')->default(0)->nullable();
             $table->integer('author_id')->default(0)->index();
-            $table->string('avatar')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('quantity')->default(0)->nullable();
             $table->tinyInteger('active')->default(1)->index();
             $table->tinyInteger('hot')->default(0);
+            $table->tinyInteger('payment')->default(0);
             $table->integer('view')->default(0);
             $table->string('title_seo')->nullable();
             $table->string('keyword_seo')->nullable();

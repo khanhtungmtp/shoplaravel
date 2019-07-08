@@ -2,29 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AuthRequest;
-use App\Http\Requests\LoginRequest;
-use App\User;
+use App\Models\contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\View;
-use Modules\Admin\Entities\AdminCategory;
-use Modules\Admin\Entities\AdminProduct;
 
-class HomeController extends Controller
+class ContactController extends Controller
 {
-    /**
-     * share category cho toan bo trang
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function __construct()
-    {
-        $categories = AdminCategory::all();
-        View::share('categories', $categories);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -32,11 +14,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = AdminProduct::where('quantity', '>=', '1')->get();
-//        dd($products);
-        return view('home.index', compact('products'));
+        return view('contact.index');
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -56,16 +35,18 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        contact::create($data);
+        return redirect()->back()->with('message', 'Gửi liên hệ thành công');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(contact $contact)
     {
         //
     }
@@ -73,10 +54,10 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(contact $contact)
     {
         //
     }
@@ -85,10 +66,10 @@ class HomeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, contact $contact)
     {
         //
     }
@@ -96,13 +77,11 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(contact $contact)
     {
-
+        //
     }
-
-
 }
