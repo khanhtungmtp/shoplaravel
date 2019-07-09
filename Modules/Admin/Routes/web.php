@@ -48,10 +48,7 @@ Route::prefix('admin')->group(function ()
     Route::group(['prefix' => 'transaction'], function ()
     {
         Route::get('/', 'AdminTransactionController@index')->name('admin.get.list.transaction');
-        Route::get('/create', 'AdminTransactionController@create')->name('admin.get.create.transaction');
-        Route::post('/create', 'AdminTransactionController@store')->name('admin.post.store.transaction');
-        Route::get('/edit/{id}', 'AdminTransactionController@edit')->name('admin.get.edit.transaction');
-        Route::post('/update/{id}', 'AdminTransactionController@update')->name('admin.post.update.transaction');
+        Route::get('/show/{id}', 'AdminTransactionController@show')->name('admin.get.show.transaction');
         Route::get('/{action}/{id}', 'AdminTransactionController@action')->name('admin.post.action.transaction');
     });
 

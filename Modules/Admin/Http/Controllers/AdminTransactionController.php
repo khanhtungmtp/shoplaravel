@@ -5,6 +5,8 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Admin\Entities\AdminOrder;
+use Modules\Admin\Entities\AdminTransaction;
 
 class AdminTransactionController extends Controller
 {
@@ -14,7 +16,32 @@ class AdminTransactionController extends Controller
      */
     public function index()
     {
-        return view('admin::index');
+        $transactions = AdminTransaction::with('user:id,name')->paginate(10);
+        return view('admin::transaction.index', compact('transactions'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     * @return Response
+     */
+    public function action($action, $id)
+    {
+        if ($action)
+        {
+            $transaction = AdminTransaction::find($id);
+            switch ($action)
+            {
+                case 'status':
+                    $transaction->status = $transaction->status ? 0 : 1;
+                    $transaction->save();
+                    return redirect()->back()->with('message', 'Cập nhập trạng thái đơn hàng thành công');
+                    break;
+                case 'delete':
+                    $transaction->delete();
+                    return redirect()->back()->with('message', 'Xóa đơn hàng thành công');
+                    break;
+            }
+        }
     }
 
     /**
@@ -37,13 +64,18 @@ class AdminTransactionController extends Controller
     }
 
     /**
-     * Show the specified resource.
+     * Hiển thị chi tiết đơn hàng của khách
      * @param int $id
-     * @return Response
+     * @return Response trả về json cho ajax
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        return view('admin::show');
+        if ($request->ajax())
+        {
+            $orders = AdminOrder::with('product')->where('transaction_id', $id)->get();
+            $html   = view('admin::order.view', compact('orders'))->render();
+            return response()->json($html);
+        }
     }
 
     /**
@@ -59,7 +91,7 @@ class AdminTransactionController extends Controller
     /**
      * Update the specified resource in storage.
      * @param Request $request
-     * @param int $id
+     * @param int     $id
      * @return Response
      */
     public function update(Request $request, $id)
