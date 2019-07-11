@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Admin\Entities;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AdminCategory extends Model
+class Category extends Model
 {
     protected $table = 'categories';
     protected $fillable = ['name', 'slug' , 'icon', 'avatar', 'active', 'title_seo', 'description_seo', 'keyword_seo', 'total_product'];

@@ -64,13 +64,13 @@
                                                 @foreach ($products as $product)
                                                     <div class="single-product first-sale">
                                                         <div class="product-img">
-                                                            <a href="#">
+                                                            <a href="{{ route('get.product.detail',[$product->slug, $product->id]) }}">
                                                                 <img class="primary-image" src="{{ asset(pare_url_file($product->image, 'products')) }}" alt="" />
                                                                 <img class="secondary-image" src="{{ asset(pare_url_file($product->image, 'products')) }}" alt="" />
                                                             </a>
                                                             <div class="action-zoom">
                                                                 <div class="add-to-cart">
-                                                                    <a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
+                                                                    <a href="{{ route('get.product.detail',[$product->slug, $product->id]) }}" title="Quick View"><i class="fa fa-search-plus"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div class="actions">

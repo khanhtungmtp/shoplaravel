@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use Modules\Admin\Entities\AdminCategory;
-use Modules\Admin\Entities\AdminProduct;
 
-class CategoryController extends Controller
+class CategoryController extends FrontendController
 {
     /**
      * share category cho toan bo trang
@@ -16,8 +16,7 @@ class CategoryController extends Controller
      */
     public function __construct()
     {
-        $categories = AdminCategory::all();
-        View::share('categories', $categories);
+        parent::__construct();
     }
     /**
      *  cat $url ra lấy tham số {slug}-{id} của route : samsung-1
@@ -31,11 +30,11 @@ class CategoryController extends Controller
         $id  = array_pop($url);
         if ($id)
         {
-            $products = AdminProduct::where([
+            $products = Product::where([
                 'id'     => $id,
-                'active' => AdminProduct::STATUS_PUBLIC
+                'active' => Product::STATUS_PUBLIC
             ])->orderByDesc('id')->paginate(10);
-            $category = AdminCategory::find($id);
+            $category = Category::find($id);
             return view('product.index', compact('products', 'category'));
         }
         return redirect('/');

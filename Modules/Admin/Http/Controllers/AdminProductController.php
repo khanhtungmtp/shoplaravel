@@ -2,11 +2,11 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Admin\Entities\AdminCategory;
-use Modules\Admin\Entities\AdminProduct;
 use Modules\Admin\Http\Requests\AdminProductRequest;
 
 class AdminProductController extends Controller
@@ -17,7 +17,7 @@ class AdminProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = AdminProduct::with('category:id,name');
+        $products = Product::with('category:id,name');
         if ($request->name) $products->where('name','like','%'.$request->name.'%');
         if ($request->cate) $products->where('category_id',$request->cate);
 
@@ -55,11 +55,11 @@ class AdminProductController extends Controller
     public function insertOrUpdate($request, $id = '')
     {
         $update = 0;
-        $data   = new AdminProduct();
+        $data   = new Product();
         if ($id)
         {
             $update  = 1;
-            $product = AdminProduct::find($id);
+            $product = Product::find($id);
         }
         $data                = $request->all();
         $data['slug']        = str_slug($request->name);
@@ -72,12 +72,13 @@ class AdminProductController extends Controller
                 $data['image'] = $file['name'];
             }
         }
-        if ($update == 1)
+        if ($update == 0)
         {
-            $product->update($data);
+            Product::create($data);
+
         } else
         {
-            AdminProduct::create($data);
+            $product->update($data);
         }
     }
 
@@ -88,7 +89,7 @@ class AdminProductController extends Controller
      */
     public function getAllCategories()
     {
-        return AdminCategory::all();
+        return Category::all();
     }
 
     /**
@@ -109,7 +110,7 @@ class AdminProductController extends Controller
     public function edit($id)
     {
         $categories = $this->getAllCategories();
-        $product    = AdminProduct::find($id);
+        $product    = Product::find($id);
         return view('admin::product.edit', compact('product', 'categories'));
     }
 
@@ -144,7 +145,7 @@ class AdminProductController extends Controller
     {
         if ($action)
         {
-            $product = AdminProduct::find($id);
+            $product = Product::find($id);
             switch ($action)
             {
                 case 'delete':

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AdminProduct extends Migration
+class Product extends Migration
 {
     /**
      * Run the migrations.
@@ -29,6 +29,8 @@ class AdminProduct extends Migration
             $table->tinyInteger('hot')->default(0);
             $table->tinyInteger('payment')->default(0);
             $table->integer('view')->default(0);
+            $table->integer('total_rating')->default(0)->comment('Tổng số đánh giá');
+            $table->integer('total_number_rating')->default(0)->comment('Tổng số điểm đánh giá');
             $table->string('title_seo')->nullable();
             $table->string('keyword_seo')->nullable();
             $table->timestamps();

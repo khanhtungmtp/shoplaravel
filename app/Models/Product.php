@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\Admin\Entities;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AdminProduct extends Model
+class Product extends Model
 {
     protected $table    = 'products';
     protected $fillable = [
         'name', 'slug', 'description', 'content', 'category_id', 'price', 'price_sale',
-        'author_id', 'image', 'quantity', 'active', 'hot', 'view', 'title_seo', 'keyword_seo'];
+        'author_id', 'image', 'quantity', 'active', 'hot', 'view', 'total_rating', 'total_number_rating', 'title_seo', 'keyword_seo'];
     protected $guarded  = [''];
 
     const STATUS_PUBLIC  = 1;
@@ -59,6 +59,6 @@ class AdminProduct extends Model
      **/
     public function category()
     {
-        return $this->belongsTo(AdminCategory::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

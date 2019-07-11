@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Cart;
 use Illuminate\Support\Carbon;
-use Modules\Admin\Entities\AdminOrder;
-use Modules\Admin\Entities\AdminProduct;
-use Modules\Admin\Entities\AdminTransaction;
 use Modules\Admin\Http\Requests\AdminCheckoutRequest;
 
 class ShoppingCartController extends Controller
@@ -17,7 +17,7 @@ class ShoppingCartController extends Controller
      */
     public function addToCart($id)
     {
-        $product = AdminProduct::select('id', 'name', 'price', 'price_sale', 'image', 'quantity')->find($id);
+        $product = Product::select('id', 'name', 'price', 'price_sale', 'image', 'quantity')->find($id);
         if (!$product)
         {
             return redirect()->route('home');
@@ -67,7 +67,7 @@ class ShoppingCartController extends Controller
     public function saveInfoShoppingCart(AdminCheckoutRequest $request)
     {
         $total_price    = str_replace(',', '', Cart::subtotal(0, 3));
-        $transaction_id = AdminTransaction::insertGetId([
+        $transaction_id = Transaction::insertGetId([
             'user_id'    => get_data_user('web'),
             'phone'      => $request->phone,
             'address'    => $request->address,
@@ -81,7 +81,7 @@ class ShoppingCartController extends Controller
             $carts = Cart::content();
             foreach ($carts as $cart)
             {
-                AdminOrder::insert([
+                Order::insert([
                     'transaction_id' => $transaction_id,
                     'product_id'     => $cart->id,
                     'quantity'       => $cart->qty,

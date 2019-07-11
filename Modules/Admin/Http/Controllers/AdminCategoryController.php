@@ -2,11 +2,11 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
-use Modules\Admin\Entities\AdminCategory;
 use Modules\Admin\Http\Requests\AdminCategoryRequest;
 
 class AdminCategoryController extends Controller
@@ -17,7 +17,7 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $categories = AdminCategory::select('id', 'name', 'slug', 'active')->get();
+        $categories = Category::select('id', 'name', 'slug', 'active')->get();
         return view('admin::category.index', compact('categories'));
     }
 
@@ -58,7 +58,7 @@ class AdminCategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = AdminCategory::find($id);
+        $category = Category::find($id);
         return view('admin::category.edit', compact('category'));
     }
 
@@ -81,7 +81,7 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = AdminCategory::find($id);
+        $category = Category::find($id);
         $category->delete();
         return redirect()->route('admin.get.list.category')->with(['message' => 'Xóa danh mục thành công']);
     }
@@ -95,7 +95,7 @@ class AdminCategoryController extends Controller
     {
         if ($action)
         {
-            $category = AdminCategory::find($id);
+            $category = Category::find($id);
             switch ($action)
             {
                 case 'delete':
@@ -113,10 +113,10 @@ class AdminCategoryController extends Controller
      */
     public function createOrUpdate($request, $id = '')
     {
-        $data = new  AdminCategory();
+        $data = new  Category();
         if ($id)
         {
-            $data = AdminCategory::find($id);
+            $data = Category::find($id);
         }
         $data->name      = $request->name;
         $data->slug      = str_slug($request->name);

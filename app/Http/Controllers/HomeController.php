@@ -2,17 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AuthRequest;
-use App\Http\Requests\LoginRequest;
-use App\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\View;
-use Modules\Admin\Entities\AdminCategory;
-use Modules\Admin\Entities\AdminProduct;
 
-class HomeController extends Controller
+class HomeController extends FrontendController
 {
     /**
      * share category cho toan bo trang
@@ -21,8 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $categories = AdminCategory::all();
-        View::share('categories', $categories);
+        parent::__construct();
     }
 
     /**
@@ -32,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = AdminProduct::where('quantity', '>=', '1')->get();
+        $products = Product::where('quantity', '>=', '1')->get();
 //        dd($products);
         return view('home.index', compact('products'));
     }

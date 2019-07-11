@@ -17,8 +17,19 @@ Route::get('/dang-ky', 'Auth\RegisterController@index')->name('get.register');
 Route::post('/dang-ky', 'Auth\RegisterController@store')->name('store.register');
 Route::get('/dang-nhap', 'Auth\LoginController@getLogin')->name('get.login');
 Route::post('/dang-nhap', 'Auth\LoginController@postLogin')->name('post.login');
-Route::get('/danh-muc/{slug}-{id}', 'CategoryController@index')->name('category.index');
+
+Route::group(['prefix' => 'danh-muc'], function ()
+{
+    Route::get('/{slug}-{id}', 'CategoryController@index')->name('category.index');
+});
+
+Route::group(['prefix' => 'ajax', 'middleware' => 'CheckLoginUserPay'], function ()
+{
+    Route::post('/danh-gia/{id}', 'RatingController@store')->name('store.rating.product');
+});
+
 Route::get('/san-pham/{slug}-{id}', 'ProductDetailController@index')->name('get.product.detail');
+
 // gio hang
 Route::get('/them-vao-gio/{id}', 'ShoppingCartController@addToCart')->name('add.cart');
 Route::get('/gio-hang', 'ShoppingCartController@index')->name('cart.index');

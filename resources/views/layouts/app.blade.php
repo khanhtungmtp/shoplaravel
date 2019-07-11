@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="{{ asset('') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Favicon
     ============================================ -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/client/img/favicon.ico">
@@ -144,6 +145,7 @@
 <!-- main js
 ============================================ -->
 <script src="assets/client/js/main.js"></script>
+@yield('script')
 @if(session('error'))
     <script type="text/javascript">
         toastr.error('{{ session('error') }}', 'Thông báo', {timeOut: 5000});

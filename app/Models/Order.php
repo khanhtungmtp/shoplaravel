@@ -1,20 +1,20 @@
 <?php
 
-namespace Modules\Admin\Entities;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AdminOrder extends Model
+class Order extends Model
 {
     protected $table = 'orders';
     protected $fillable = ['transaction_id', 'product_id', 'quantity', 'price', 'price_sale'];
 
     /**
      * 1 đơn hàng thuộc về sản phẩm
-    */
+     */
     public function product()
     {
-        return $this->belongsTo(AdminProduct::class, 'product_id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     /**
@@ -22,6 +22,6 @@ class AdminOrder extends Model
      */
     public function transaction()
     {
-        return $this->belongsTo(AdminTransaction::class, 'transaction_id');
+        return $this->belongsTo(Transaction::class, 'transaction_id');
     }
 }

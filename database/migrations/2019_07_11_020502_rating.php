@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AdminOrder extends Migration
+class Rating extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class AdminOrder extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('transaction_id')->index()->default(0);
+            $table->integer('user_id')->index()->default(0);
             $table->integer('product_id')->index()->default(0);
-            $table->tinyInteger('quantity')->default(0);
-            $table->integer('price')->default(0);
-            $table->tinyInteger('price_sale')->default(0)->nullable();
+            $table->tinyInteger('number')->default(0);
+            $table->string('content')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class AdminOrder extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('ratings');
     }
 }

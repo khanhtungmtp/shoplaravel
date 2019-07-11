@@ -2,11 +2,11 @@
 
 namespace Modules\Admin\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Admin\Entities\AdminOrder;
-use Modules\Admin\Entities\AdminTransaction;
 
 class AdminTransactionController extends Controller
 {
@@ -16,7 +16,7 @@ class AdminTransactionController extends Controller
      */
     public function index()
     {
-        $transactions = AdminTransaction::with('user:id,name')->paginate(10);
+        $transactions = Transaction::with('user:id,name')->paginate(10);
         return view('admin::transaction.index', compact('transactions'));
     }
 
@@ -28,7 +28,7 @@ class AdminTransactionController extends Controller
     {
         if ($action)
         {
-            $transaction = AdminTransaction::find($id);
+            $transaction = Transaction::find($id);
             switch ($action)
             {
                 case 'status':
@@ -72,7 +72,7 @@ class AdminTransactionController extends Controller
     {
         if ($request->ajax())
         {
-            $orders = AdminOrder::with('product')->where('transaction_id', $id)->get();
+            $orders = Order::with('product')->where('transaction_id', $id)->get();
             $html   = view('admin::order.view', compact('orders'))->render();
             return response()->json($html);
         }

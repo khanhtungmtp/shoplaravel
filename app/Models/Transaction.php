@@ -1,11 +1,10 @@
 <?php
 
-namespace Modules\Admin\Entities;
+namespace App\Models;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class AdminTransaction extends Model
+class Transaction extends Model
 {
     protected $table = 'transactions';
     protected $fillable = ['id', 'user_id', 'phone', 'address', 'note', 'total', 'status'];
@@ -41,5 +40,4 @@ class AdminTransaction extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
-
 }
