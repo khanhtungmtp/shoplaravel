@@ -51,5 +51,11 @@ Route::prefix('admin')->group(function ()
         Route::get('/show/{id}', 'AdminTransactionController@show')->name('admin.get.show.transaction');
         Route::get('/{action}/{id}', 'AdminTransactionController@action')->name('admin.post.action.transaction');
     });
+    // quan ly danh gia rating
+    Route::group(['prefix' => 'rating'], function ()
+    {
+        Route::get('/', 'AdminRatingController@index')->name('admin.get.list.rating');
+        Route::get('/{action}/{id}', 'AdminRatingController@action')->name('admin.post.action.rating');
+    });
 
 });

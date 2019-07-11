@@ -35,7 +35,7 @@
     </li>
     <li class="nav-item has-treeview">
       <a href="#" class="nav-link @if(Route::is('admin.get.list.category')) menu-open @endif">
-        <i class="nav-icon fas fa-chart-pie"></i>
+        <i class="nav-icon fa fa-tablet"></i>
         <p>
           Sản phẩm
           <i class="right fas fa-angle-left"></i>
@@ -63,14 +63,22 @@
         <i class="nav-icon fas fa-chart-pie"></i>
         <p>
           Đơn hàng
-          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+    </li>
+
+    <li class="nav-item has-treeview">
+      <a href="{{ route('admin.get.list.rating') }}" class="nav-link @if(Route::is('admin.get.list.rating')) menu-open @endif">
+        <i class="nav-icon fas fa-star"></i>
+        <p>
+          Đánh giá
         </p>
       </a>
     </li>
 
     <li class="nav-item has-treeview">
       <a href="{{ route('admin.get.list.user') }}" class="nav-link @if(Route::is('admin.get.list.user')) menu-open @endif">
-        <i class="nav-icon fas fa-chart-pie"></i>
+        <i class="nav-icon fa fa-user"></i>
         <p>
           Tài khoản
         </p>
