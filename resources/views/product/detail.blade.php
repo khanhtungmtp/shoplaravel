@@ -51,6 +51,9 @@
             border-width: 6px;
             margin-top: -6px;
         }
+        .active {
+            color: #ff9727!important;
+        }
     </style>
     <!-- breadcrumbs area start -->
     <div class="breadcrumbs">
@@ -118,12 +121,20 @@
                             <div class="product-content">
                                 <h2 class="product-name"><a href="#">{{ $product->name }}</a></h2>
                                 <div class="rating-price">
+                                    <?php
+                                    $avgStar = 0;
+                                    $total_rating        = $product->total_rating;
+                                    $total_number_rating = $product->total_number_rating;
+                                    if ($product->total_rating)
+                                    {
+                                        $avgStar = round($total_number_rating / $total_rating, 2);
+                                    }
+                                    ?>
                                     <div class="pro-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <i class="fa fa-star {{ $i <= $avgStar ? 'active' : '' }}"></i>
+                                        @endfor
+                                        <span>{{ $avgStar }} đánh giá </span>
                                     </div>
                                     <div class="price-boxes">
                                         <span class="new-price">{{ number_format($product->price) }} VND</span>
@@ -345,7 +356,11 @@
                             contentRating: contentRating
                         }
                     }).done(function (result) {
-                        console.log(result)
+                        if (result.code == 1)
+                        {
+                            alert('Cám ơn bạn đã đánh giá sản phẩm');
+                            location.reload();
+                        }
                     })
                 }
             })

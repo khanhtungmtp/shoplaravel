@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="assets/admin/dist/css/toastr.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  @yield('style')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

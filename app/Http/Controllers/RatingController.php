@@ -23,7 +23,7 @@ class RatingController extends Controller
             ]);
             $product = Product::find($id);
             $product->total_rating +=1;
-            $product->total_number_rating = $request->numberRating;
+            $product->total_number_rating += $request->numberRating;
             $product->save();
             return response()->json(['code' => 1]);
         }
