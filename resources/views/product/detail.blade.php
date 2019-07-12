@@ -236,6 +236,29 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="components-list-rating">
+                            @if (isset($ratings))
+                                @foreach ($ratings as $rating)
+                                    <div class="rating-item" style="margin: 10px 0">
+                                        <div>
+                                            <span style="color: #333;font-weight: bold;text-transform: capitalize">{{ isset($rating->user->name) ? $rating->user->name : '[N\A]' }}</span>
+                                            <a href="" style="color: #2ba832"><i class="fa fa-check-circle-o"> Đã mua hàng tại website</i></a>
+                                        </div>
+                                        <p style="margin-bottom: 0">
+                                       <span>
+                                           @for ($i = 1; $i <= 5; $i++)
+                                               <i class="fa fa-star {{ $i <= $rating->number ? 'active' : '' }}"></i>
+                                           @endfor
+                                       </span>
+                                            {{ $rating->content }}
+                                        </p>
+                                        <div>
+                                            <span><i class="fa fa-clock-o">{{ $rating->created_at }}c</i></span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
