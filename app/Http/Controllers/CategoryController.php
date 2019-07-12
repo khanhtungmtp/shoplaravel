@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\View;
 class CategoryController extends FrontendController
 {
     /**
-     * share category cho toan bo trang
+     * Trang chủ sản phẩm theo danh mục
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,6 +18,7 @@ class CategoryController extends FrontendController
     {
         parent::__construct();
     }
+
     /**
      *  cat $url ra lấy tham số {slug}-{id} của route : samsung-1
      *
@@ -31,8 +32,8 @@ class CategoryController extends FrontendController
         if ($id)
         {
             $products = Product::where([
-                'id'     => $id,
-                'active' => Product::STATUS_PUBLIC
+                'category_id' => $id,
+                'active'      => Product::STATUS_PUBLIC
             ])->orderByDesc('id')->paginate(10);
             $category = Category::find($id);
             return view('product.index', compact('products', 'category'));

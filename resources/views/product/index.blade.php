@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Sản phẩm theo danh mục
+@endsection
 @section('content')
     <!-- breadcrumbs area start -->
     <div class="breadcrumbs">
@@ -28,7 +31,7 @@
                     <div class="topbar-left">
                         <aside class="widge-topbar">
                             <div class="bar-title">
-                                <div class="bar-ping"><img src="assets/client/assets/client/img/bar-ping.png" alt=""></div>
+                                <div class="bar-ping"><img src="/assets/client/img/bar-ping.png" alt=""></div>
                                 <h2>Shop by</h2>
                             </div>
                         </aside>
@@ -134,7 +137,7 @@
                         </aside>
                         <aside class="widge-topbar">
                             <div class="bar-title">
-                                <div class="bar-ping"><img src="assets/client/assets/client/img/bar-ping.png" alt=""></div>
+                                <div class="bar-ping"><img src="/assets/client/img/bar-ping.png" alt=""></div>
                                 <h2>Tags</h2>
                             </div>
                             <div class="exp-tags">
@@ -211,13 +214,13 @@
                                                     <div class="single-product">
                                                         <span class="sale-text">Sale</span>
                                                         <div class="product-img">
-                                                            <a href="#">
-                                                                <img class="primary-image" src="{{ asset(pare_url_file($product->avatar, 'products')) }}" alt="" />
-                                                                <img class="secondary-image" src="{{ asset(pare_url_file($product->avatar, 'products' )) }}" alt="" />
+                                                            <a href="{{ route('get.product.detail',[$product->slug, $product->id]) }}">
+                                                                <img class="primary-image" src="{{ pare_url_file($product->image, 'products') }}" alt="" />
+                                                                <img class="secondary-image" src="{{ pare_url_file($product->image, 'products' ) }}" alt="" />
                                                             </a>
                                                             <div class="action-zoom">
                                                                 <div class="add-to-cart">
-                                                                    <a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
+                                                                    <a href="{{ route('get.product.detail',[$product->slug, $product->id]) }}" title="Quick View"><i class="fa fa-search-plus"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div class="actions">
@@ -227,7 +230,7 @@
                                                                             <a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
                                                                         </div>
                                                                         <div class="compare-button">
-                                                                            <a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
+                                                                            <a href="{{ route('add.cart', $product->id) }}" title="Add to Cart"><i class="icon-bag"></i></a>
                                                                         </div>
                                                                     </div>
                                                                     <div class="quickviewbtn">
@@ -263,8 +266,8 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="product-img">
                                                 <a href="#">
-                                                    <img class="primary-image" src="assets/client/assets/client/img/products/product-7.jpg" alt="" />
-                                                    <img class="secondary-image" src="assets/client/assets/client/img/products/product-2.jpg" alt="" />
+                                                    <img class="primary-image" src="assets/client/img/products/product-7.jpg" alt="" />
+                                                    <img class="secondary-image" src="assets/client/img/products/product-2.jpg" alt="" />
                                                 </a>
                                             </div>
                                         </div>
@@ -312,8 +315,8 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="product-img">
                                                 <a href="#">
-                                                    <img class="primary-image" src="assets/client/assets/client/img/products/product-7.jpg" alt="" />
-                                                    <img class="secondary-image" src="assets/client/assets/client/img/products/product-8.jpg" alt="" />
+                                                    <img class="primary-image" src="/assets/client/img/products/product-7.jpg" alt="" />
+                                                    <img class="secondary-image" src="/assets/client/img/products/product-8.jpg" alt="" />
                                                 </a>
                                             </div>
                                         </div>
@@ -361,8 +364,8 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="product-img">
                                                 <a href="#">
-                                                    <img class="primary-image" src="assets/client/assets/client/img/products/product-5.jpg" alt="" />
-                                                    <img class="secondary-image" src="assets/client/assets/client/img/products/product-6.jpg" alt="" />
+                                                    <img class="primary-image" src="/assets/client/img/products/product-5.jpg" alt="" />
+                                                    <img class="secondary-image" src="/assets/client/img/products/product-6.jpg" alt="" />
                                                 </a>
                                             </div>
                                         </div>
